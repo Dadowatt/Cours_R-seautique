@@ -1,0 +1,25 @@
+enable
+conf t
+int gig 0/0
+ip address
+no sh
+
+exit
+serial (left)
+ip address 10.1.1.1
+no sh
+
+
+2em router
+enable
+conf t
+int gig 0/0
+ip address
+no sh
+
+exit
+int serial(droite)
+ip address 10.1.1.2
+no sh
+
+

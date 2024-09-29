@@ -1,0 +1,121 @@
+et
+VOIP 1 SWITCH:
+brancher la machine sur le router 
+
+en
+conf t
+int fastEthernet 0/0
+ip address 80.1.1.1 255.0.0.0
+no shutdown
+exit
+
+
+telephony-service
+max-dn 7
+max-ephones 6
+ip source-address 80.1.1.1 port 2000
+auto assign 1 to 7
+auto assign 6 to 8
+exit
+do wr
+
+
+ephone-dn 1
+number 31
+exit
+
+ephone-dn 2
+number 32
+exit
+
+ephone-dn 3
+number 33
+exit
+
+ephone-dn 4
+number 34
+exit
+
+ephone-dn 5
+number 35
+exit
+do wr
+
+
+ip dhcp pool voce
+network 80.0.0.0 255.0.0.0
+option 150 ip 80.1.1.1
+default-router 80.1.1.30
+exit
+do wr
+
+
+
+la dernière configuration à faire ,
+debrancher la machine du router et le
+ brancher sur le switch.
+
+en
+conf t
+int range fa0/1-24
+switchport voice vlan 1
+exit
+do wr
+
+
+
+configuration VOIP 2 SWITCH:
+
+sur le 1er switch:
+
+en
+conf t
+int range fa0/1-24
+switchport voice vlan 1
+exit
+do wr
+
+sur le 2em switch:
+en
+conf t
+int range fa0/1-24
+switchport voice vlan 1
+exit
+do wr
+
+sur le router:
+en
+conf t
+int fastEthernet 0/0
+ip address 192.168.1.1 255.255.255.0
+no shutdown
+exit
+
+telephony-service
+max-dn 7
+max-ephones 6
+ip source-address 192.168.1.1 port 2000
+auto assign 1 to 7
+auto assign 6 to 8
+exit
+do wr
+
+ephone-dn 1
+number 31
+exit
+
+ephone-dn 2
+number 32
+exit
+
+ephone-dn 3
+number 33
+exit
+do wr
+
+ip dhcp pool reseau
+network 192.168.1.0 255.255.255.0
+option 150 ip 192.168.1.1
+default-router 192.168.1.10
+exit
+do wr

@@ -1,0 +1,7 @@
+la premiere configuration à faire est de configurer en premier le router puis
+dans chaque machiches aller sur Desktop= IPCONIFIG = DHCP (cela configure
+automatiquement l'addresse IP des machine)
+
+pour permettre 2 different réseau de communiquer,
+ on configure sur chaque machine l'addresse IP de l'autre réseau en allant sur
+config=default gateway = renseigner l'addresse IP de l'autre réseau.

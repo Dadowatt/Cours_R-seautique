@@ -1,0 +1,108 @@
+configuration vlan 2 switch:
+
+configuration du 1er réseau
+enable
+conf terminal
+vlan 60
+name compt
+exit
+vlan 30
+name inf
+exit
+
+interface range fa0/1, fa0/2, fa0/3
+switchport mode access
+switch access vlan 30
+exit 
+
+interface range fa0/4, fa0/5, fa0/6
+switchport mode access
+switchport access vlan 60
+
+
+
+configuration 2em machine
+
+enable
+conf terminal
+interface range fa0/1, fa0/2, fa0/3, fa0/4
+switchport mode access
+switchport access vlan 60
+exit
+
+interface range fa0/5, fa0/6, fa0/7, fa0/8
+switchport mode access
+switchport access vlan 30
+exit
+
+interface (range) fa0/20
+switchport mode trunk
+
+
+
+configuration vlan 3 switch:
+
+1er switch:
+
+enable
+conf terminal
+vlan 10
+name reseau
+exit
+vlan 20
+name html
+exit
+vlan 40
+name php
+exit
+
+interface range fa0/1-2
+switchport mode access
+switchport access vlan 10
+exit
+
+interface range fa0/3-4
+switchport mode access
+switchport access vlan 20
+exit
+
+configuration du 2em switch:
+enable
+conf terminal
+interface range fa0/1-4
+switchport mode access
+switchport access vlan 10
+exit
+
+interface range fa0/5-8
+switchport mode access
+switchport access vlan 40
+exit
+
+interface range fa0/9-12
+switchport mode access
+switchport access vlan 20
+exit
+
+configuration du 3em switch:
+
+enable
+conf terminal
+interface range fa0/1-4
+switchport mode access
+switchport access vlan 40
+exit
+
+interface range fa0/5-8
+switchport mode access
+switchport access vlan 10
+exit
+
+interface range fa0/9-12
+switchport mode access
+switchport access vlan 20
+exit
+
+interface fa0/13
+switchport mode access
+switchport mode trunk

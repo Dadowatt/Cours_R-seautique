@@ -1,0 +1,38 @@
+R1
+en
+conf t
+int gig
+ip add
+no sh
+exit
+int serial 0/1/0
+ip add
+no sh
+
+R2
+en
+conf t
+int gig
+ip add
+no sh
+int serial 0/1/1
+ip add
+no sh
+
+R3
+en
+conf t
+int gig
+ip add
+no sh
+exit
+int serial 0/1/0
+ip add
+no sh
+
+
+dernier conf des router
+en
+conf t
+router rip
+network (saisir tous les address)

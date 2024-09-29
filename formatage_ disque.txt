@@ -1,0 +1,43 @@
+pour formater une clé usb
+WIN+ R
+cmd
+1_ diskpart
+list disk
+select disk 1
+clean
+creat(e) partition primary
+format fs=fat32 quick
+assign
+
+pour formater un disque dur
+WIN+ R
+cmd
+1_ diskpart
+list disk
+select disk 1
+clean
+creat(e) partition primary
+format fs=ntfs quick
+assign
+
+pour partitionner une disque
+clique droit sur ce pc
+gerer
+gestion des disques
+clique droit sur disque C
+reduire le volume
+clique droit sur la partition nommé non aloué
+nouveau volume
+renommer nom du volume
+
+pour enlever une partition
+clique droit sur ce pc
+gerer
+gestion des disques
+supprimer le volume
+revenir sur dique c
+cliquer sur etendre le volume
+ok
+suivant
+terminer
+
